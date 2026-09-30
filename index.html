@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tidewater</title>
+<style>
+  :root {
+    --bg: #f4f8f8;
+    --text: #12303f;
+    --muted: #4a6572;
+    --box: #e4eef0;
+    --line: #c9dde0;
+    --accent: #f2b705;
+    --on-accent: #12303f;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d222c;
+      --text: #e6f0f2;
+      --muted: #9db6be;
+      --box: #15303c;
+      --line: #24475a;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d222c;
+    --text: #e6f0f2;
+    --muted: #9db6be;
+    --box: #15303c;
+    --line: #24475a;
+  }
+
+  html {
+    scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 4.5rem);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+
+  *, *::before, *::after { box-sizing: inherit; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+  }
+
+  a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  /* Navigation */
+  .site-header {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 4rem;
+  }
+  .brand {
+    font-family: "Iowan Old Style", Georgia, "Times New Roman", serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav ul {
+    display: flex;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .nav ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+  }
+  .nav ul a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 6px; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding-top: clamp(4rem, 14vw, 9rem);
+    padding-bottom: clamp(4rem, 14vw, 9rem);
+  }
+  .hero h1 {
+    margin: 0 auto 1.25rem;
+    max-width: 16ch;
+    font-family: "Iowan Old Style", Georgia, "Times New Roman", serif;
+    font-size: clamp(2.25rem, 8vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .hero p {
+    margin: 0 auto 2rem;
+    max-width: 34rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--muted);
+  }
+  .button {
+    display: inline-block;
+    padding: 0.9rem 1.75rem;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 999px;
+  }
+  .button:hover { filter: brightness(0.94); }
+
+  /* Features */
+  .features { padding-bottom: clamp(4rem, 12vw, 7rem); }
+  .grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  }
+  .box {
+    background: var(--box);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .box h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.05rem;
+  }
+  .box p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding-top: 2rem;
+    padding-bottom: 2.5rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .site-footer a { color: var(--text); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#home">Tidewater</a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero" id="home">
+    <h1>Know the water before you leave the dock</h1>
+    <p>Tides, swell, and wind for your home harbor on one calm screen that keeps working when the signal drops.</p>
+    <a class="button" href="#contact">Get early access</a>
+  </section>
+
+  <section class="wrap features" id="about" aria-label="Features">
+    <div class="grid">
+      <div class="box">
+        <h3>Harbor-level tides</h3>
+        <p>Times and heights for the exact harbor you sail from, not the nearest big port.</p>
+      </div>
+      <div class="box">
+        <h3>Works offline</h3>
+        <p>Your forecast is saved on your phone, so it is there when you are miles from shore.</p>
+      </div>
+      <div class="box">
+        <h3>Wind alerts</h3>
+        <p>Get a heads-up when gusts pass the limit you set for your boat.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="contact">
+  <div class="wrap">
+    Questions? Write to <a href="mailto:hello@tidewater.example">hello@tidewater.example</a>
+  </div>
+</footer>
+
+</body>
+</html>
